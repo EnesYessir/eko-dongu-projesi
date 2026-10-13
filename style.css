@@ -1,0 +1,274 @@
+/* Genel Ayarlar ve Doğa/Coğrafya Teması */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f7f4;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Üst Bilgi (Header) */
+header {
+    background: linear-gradient(135deg, #1b4332, #2d6a4f);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo-area i {
+    color: #52b788;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #d8f3dc;
+    margin-bottom: 1rem;
+}
+
+.score-board {
+    background-color: #52b788;
+    color: #1b4332;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Ana İçerik */
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Tanıtım Kartı */
+.intro-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border-left: 5px solid #2d6a4f;
+}
+
+.intro-card h2 {
+    color: #1b4332;
+    margin-bottom: 0.5rem;
+}
+
+/* İstasyonlar Bölümü */
+.stations-section h3, .reward-section h3 {
+    color: #1b4332;
+    margin-bottom: 0.5rem;
+}
+
+.hint {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.station-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.station-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    border: 1px solid #d8f3dc;
+}
+
+.station-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(45, 106, 79, 0.15);
+    border-color: #52b788;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.icon-box.plastic { background-color: #0077b6; }
+.icon-box.organic { background-color: #40916c; }
+.icon-box.paper { background-color: #b7b7a4; }
+.icon-box.glass { background-color: #d4a373; }
+
+.station-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #2b2b2b;
+}
+
+.qr-tag {
+    background-color: #e9edc9;
+    color: #386641;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Ödül Mağazası */
+.reward-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.reward-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    border: 1px solid #d8f3dc;
+}
+
+.reward-card i {
+    font-size: 2.5rem;
+    color: #d4a373;
+    margin-bottom: 0.5rem;
+}
+
+.reward-card h4 {
+    margin-bottom: 0.3rem;
+}
+
+.reward-card p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.reward-card button {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.reward-card button:hover {
+    background-color: #1b4332;
+}
+
+/* Modal (Açılır Pencere) Tasarımı */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+#modal-body {
+    margin-top: 1rem;
+}
+
+.modal-body-content p {
+    margin-bottom: 1rem;
+}
+
+.modal-body-content ul {
+    margin-left: 20px;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+.quiz-box {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #52b788;
+    margin-top: 1rem;
+}
+
+.quiz-box button {
+    background-color: #52b788;
+    color: #1b4332;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quiz-box button:hover {
+    background-color: #40916c;
+    color: white;
+}
+
+/* Alt Bilgi */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #1b4332;
+    color: #d8f3dc;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
