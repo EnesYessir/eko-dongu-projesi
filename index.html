@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eko-Döngü | Akıllı Atık Yönetimi ve Kompost</title>
+    <!-- Stil Dosyası Bağlantısı -->
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Üst Bilgi / Header -->
+    <header>
+        <div class="logo-area">
+            <i class="fa-solid fa-leaf"></i>
+            <h1>Eko-Döngü</h1>
+        </div>
+        <p>Maarif Modeli OB8 Sürdürülebilirlik & Akıllı Atık Yönetimi</p>
+        <div class="score-board">
+            <i class="fa-solid fa-star"></i> Eko-Puanım: <span id="user-score">0</span>
+        </div>
+    </header>
+
+    <!-- Ana İçerik Alanı -->
+    <main>
+        <!-- Proje Tanıtım Kartı -->
+        <section class="intro-card">
+            <h2>🌍 Doğayı Koru, Puanları Topla!</h2>
+            <p>Geri dönüşüm kutularındaki QR kodları okutarak renklerine göre doğru atık ayrıştırma görevlerini tamamla, hem doğaya katkı sağla hem de kantinde geçerli eko-puanlar kazan!</p>
+        </section>
+
+        <!-- QR Kod / Kutu İstasyonları (Renk Kodlarına Göre) -->
+        <section class="stations-section">
+            <h3>🗂️ Renkli Geri Dönüşüm Kutuları (QR Simülasyonu)</h3>
+            <p class="hint">Hangi çöpün nereye atılacağını öğrenmek için kutulara tıklayabilirsin:</p>
+            
+            <div class="station-grid">
+                <!-- Sarı Kutu: Plastik ve Ambalaj -->
+                <div class="station-card" onclick="openStation('Plastik & Ambalaj', 'plastik')">
+                    <div class="icon-box yellow-bin"><i class="fa-solid fa-bottle-water"></i></div>
+                    <h4>Sarı Kutu: Plastik ve Ambalaj</h4>
+                    <p class="bin-desc">Plastik şişe, kutu ve ambalajlar buraya atılır.</p>
+                    <span class="qr-tag"><i class="fa-solid fa-qrcode"></i> QR Kodu İncele</span>
+                </div>
+
+                <!-- Kahverengi Kutu: Organik Atık -->
+                <div class="station-card" onclick="openStation('Organik Atık & Kompost', 'organik')">
+                    <div class="icon-box brown-bin"><i class="fa-solid fa-seedling"></i></div>
+                    <h4>Kahverengi Kutu: Organik Atık</h4>
+                    <p class="bin-desc">Çay posası, meyve ve sebze kabukları (Kompost için).</p>
+                    <span class="qr-tag"><i class="fa-solid fa-qrcode"></i> QR Kodu İncele</span>
+                </div>
+
+                <!-- Mavi Kutu: Kağıt -->
+                <div class="station-card" onclick="openStation('Kağıt ve Karton', 'kagit')">
+                    <div class="icon-box blue-bin"><i class="fa-solid fa-newspaper"></i></div>
+                    <h4>Mavi Kutu: Kağıt ve Karton</h4>
+                    <p class="bin-desc">Temiz kağıt, defter ve karton koliler buraya atılır.</p>
+                    <span class="qr-tag"><i class="fa-solid fa-qrcode"></i> QR Kodu İncele</span>
+                </div>
+
+                <!-- Yeşil Kutu: Cam -->
+                <div class="station-card" onclick="openStation('Cam Atık', 'cam')">
+                    <div class="icon-box green-bin"><i class="fa-solid fa-wine-bottle"></i></div>
+                    <h4>Yeşil Kutu: Cam Atık</h4>
+                    <p class="bin-desc">Cam şişe ve kavanozlar güvenle buraya atılır.</p>
+                    <span class="qr-tag"><i class="fa-solid fa-qrcode"></i> QR Kodu İncele</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kantin Ödül Mağazası -->
+        <section class="reward-section">
+            <h3>🎁 Kantin Ödül Mağazası</h3>
+            <p>Topladığın Eko-Puanlarla sürdürülebilir ödüller kazan!</p>
+            
+            <div class="reward-grid">
+                <div class="reward-card">
+                    <i class="fa-solid fa-apple-whole"></i>
+                    <h4>Taze Elma / Meyve</h4>
+                    <p>30 Puan</p>
+                    <button onclick="redeemReward(30, 'Taze Elma')">Ödülü Al</button>
+                </div>
+                <div class="reward-card">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <h4>Kantin İndirim Kuponu (%10)</h4>
+                    <p>50 Puan</p>
+                    <button onclick="redeemReward(50, 'Kantin İndirim Kuponu')">Ödülü Al</button>
+                </div>
+                <div class="reward-card">
+                    <i class="fa-solid fa-book"></i>
+                    <h4>Doğa Dostu Defter</h4>
+                    <p>100 Puan</p>
+                    <button onclick="redeemReward(100, 'Doğa Dostu Defter')">Ödülü Al</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal (QR Bilgi ve Soru Penceresi) -->
+    <div id="station-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Kutu Bilgisi</h2>
+            <div id="modal-body">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Alt Bilgi / Footer -->
+    <footer>
+        <p>Eko-Döngü Projesi &copy; 2026 | Coğrafya & Sıfır Atık Kulübü</p>
+    </footer>
+
+    <!-- JavaScript Dosyası Bağlantısı -->
+    <script src="script.js"></script>
+</body>
+</html>
